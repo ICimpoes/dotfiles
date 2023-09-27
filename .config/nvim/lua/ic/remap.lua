@@ -41,3 +41,9 @@ map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic mes
 map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 map('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+
+-- map('n', '<A-j>', '<CMD>wincmd j<CR>')
+-- map('n', '<A-h>', '<CMD>wincmd h<CR>')
+-- map('n', '<A-k>', '<CMD>wincmd k<CR>')
+-- map('n', '<A-l>', '<CMD>wincmd l<CR>')

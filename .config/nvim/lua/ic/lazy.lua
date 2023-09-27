@@ -20,7 +20,14 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-    'ThePrimeagen/vim-be-good',
+    -- Git
+    'tpope/vim-fugitive',
+    -- Github
+    --'tpope/vim-rhubarb',
+    'lewis6991/gitsigns.nvim',
+
+    -- "gc" to comment visual regions/lines
+    { 'numToStr/Comment.nvim', opts = {} },
 
     -- Fuzzy Finder (files, lsp, etc)
     {
@@ -52,6 +59,8 @@ require('lazy').setup({
         build = ':TSUpdate',
     },
 
+    "nvim-treesitter/nvim-treesitter-context",
+
     {
         'RRethy/nvim-base16',
     },
@@ -70,14 +79,6 @@ require('lazy').setup({
                 section_separators = '',
             },
         },
-    },
-    {
-        -- Highlight, edit, and navigate code
-        'nvim-treesitter/nvim-treesitter',
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter-textobjects',
-        },
-        build = ':TSUpdate',
     },
 
     -- NOTE: This is where your plugins related to LSP can be installed.

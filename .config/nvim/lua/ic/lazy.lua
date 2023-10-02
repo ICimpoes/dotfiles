@@ -27,7 +27,7 @@ require('lazy').setup({
     'lewis6991/gitsigns.nvim',
 
     -- "gc" to comment visual regions/lines
-    { 'numToStr/Comment.nvim', opts = {} },
+    'numToStr/Comment.nvim',
 
     -- Fuzzy Finder (files, lsp, etc)
     {
@@ -53,76 +53,48 @@ require('lazy').setup({
     {
         -- Highlight, edit, and navigate code
         'nvim-treesitter/nvim-treesitter',
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter-textobjects',
-        },
         build = ':TSUpdate',
     },
-
     "nvim-treesitter/nvim-treesitter-context",
 
-    {
-        'RRethy/nvim-base16',
-    },
-    {
-        'nvim-tree/nvim-web-devicons',
-    },
-    {
-        -- Set lualine as statusline
-        'nvim-lualine/lualine.nvim',
-        -- See `:help lualine.txt`
-        opts = {
-            options = {
-                icons_enabled = true,
-                theme = 'onedark',
-                component_separators = '|',
-                section_separators = '',
-            },
-        },
-    },
+    'RRethy/nvim-base16',
+    'nvim-tree/nvim-web-devicons',
+
+    -- Set lualine as statusline
+    'nvim-lualine/lualine.nvim',
 
     -- NOTE: This is where your plugins related to LSP can be installed.
     --  The configuration is done below. Search for lspconfig to find it below.
     {
-        -- LSP Configuration & Plugins
-        'neovim/nvim-lspconfig',
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v3.x',
         dependencies = {
-            -- Automatically install LSPs to stdpath for neovim
-            { 'williamboman/mason.nvim', config = true },
+            'neovim/nvim-lspconfig',
+            'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
+
+            -- Autocomletion
+            'hrsh7th/nvim-cmp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'saadparwaiz1/cmp_luasnip',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-nvim-lua',
+
+            -- Snippets
+            'L3MON4D3/LuaSnip',
+            'rafamadriz/friendly-snippets',
 
             -- Useful status updates for LSP
             -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-            { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
+            { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
             -- Additional lua configuration, makes nvim stuff amazing!
             'folke/neodev.nvim',
-        },
+        }
     },
 
-    {
-        -- Autocompletion
-        'hrsh7th/nvim-cmp',
-        dependencies = {
-            -- Snippet Engine & its associated nvim-cmp source
-            'L3MON4D3/LuaSnip',
-            'saadparwaiz1/cmp_luasnip',
-            -- Adds LSP completion capabilities
-            'hrsh7th/cmp-nvim-lsp',
-
-            -- Adds a number of user-friendly snippets
-            'rafamadriz/friendly-snippets',
-        },
-    },
-
-    {
-        "folke/trouble.nvim",
-    },
-
-    {
-        'mbbill/undotree',
-    },
-    {
-        'nvim-tree/nvim-tree.lua',
-    },
+    "folke/trouble.nvim",
+    'mbbill/undotree',
+    'nvim-tree/nvim-tree.lua',
 })

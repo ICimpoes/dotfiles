@@ -24,7 +24,6 @@ o.termguicolors = true
 
 -- Decrease update time
 o.updatetime = 40
-o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
 o.completeopt = 'menuone,noselect'

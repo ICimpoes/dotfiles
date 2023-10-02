@@ -97,4 +97,10 @@ require('lazy').setup({
     "folke/trouble.nvim",
     'mbbill/undotree',
     'nvim-tree/nvim-tree.lua',
+    {
+        "kylechui/nvim-surround",
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
+    },
+    'vim-test/vim-test',
 })

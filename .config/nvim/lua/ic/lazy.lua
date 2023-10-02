@@ -103,4 +103,8 @@ require('lazy').setup({
         event = "VeryLazy",
     },
     'vim-test/vim-test',
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+    },
 })

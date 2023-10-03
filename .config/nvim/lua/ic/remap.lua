@@ -42,6 +42,13 @@ map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message
 map('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
+map('n', '<A-t>', '<CMD>split | resize 15 | terminal<CR>i')
+map('t', '<A-t>', '<C-\\><C-n><CMD>:q<CR>')
+
+map({'n', 't'}, '<C-Up>', '<CMD>resize +2<CR>')
+map({'n', 't'}, '<C-Down>', '<CMD>resize -2<CR>')
+map({'n', 't'}, '<C-Right>', '<CMD>vertical resize +2<CR>')
+map({'n', 't'}, '<C-Left>', '<CMD>vertical resize -2<CR>')
 
 -- map('n', '<A-j>', '<CMD>wincmd j<CR>')
 -- map('n', '<A-h>', '<CMD>wincmd h<CR>')

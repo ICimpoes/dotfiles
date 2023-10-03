@@ -40,8 +40,8 @@ lsp.on_attach(function(_, bufnr)
     end, '[W]orkspace [L]ist Folders')
 
     nmap('<leader>f', function()
-            vim.lsp.buf.format({ async = true })
-        end, "[f]ormat")
+        vim.lsp.buf.format({ async = true })
+    end, "[f]ormat")
 
     -- Create a command `:Format` local to the LSP buffer
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
@@ -63,6 +63,7 @@ require('neodev').setup()
 local servers = {
     -- clangd = {},
     gopls = {},
+    solargraph = {},
     -- pyright = {},
     -- rust_analyzer = {},
     -- tsserver = {},
@@ -152,3 +153,7 @@ lspconfig.gopls.setup({
 })
 
 lspconfig.lua_ls.setup({})
+
+lspconfig.solargraph.setup({
+    root_dir = lspconfig.util.root_pattern('.git')
+})

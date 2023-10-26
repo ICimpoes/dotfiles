@@ -39,9 +39,9 @@ lsp.on_attach(function(_, bufnr)
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, '[W]orkspace [L]ist Folders')
 
-    nmap('<leader>f', function()
+    nmap('<leader>cf', function()
         vim.lsp.buf.format({ async = true })
-    end, "[f]ormat")
+    end, "[C]ode [F]ormat")
 
     -- Create a command `:Format` local to the LSP buffer
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
@@ -109,7 +109,7 @@ cmp.setup({
         ['<C-e>'] = cmp.mapping.abort(),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm({
-            --  behavior = cmp.ConfirmBehavior.Replace,
+            behavior = cmp.ConfirmBehavior.Replace,
             -- select = true,
         }),
         ['<Tab>'] = cmp.mapping(function(fallback)

@@ -19,6 +19,11 @@ o.signcolumn = 'yes'
 -- leave 8 lines when scrolling
 o.scrolloff = 8
 
+o.listchars = {
+    eol = '⤶',
+}
+o.list = true
+
 o.cursorline = true
 o.termguicolors = true
 
@@ -45,7 +50,7 @@ o.undofile = true
 o.swapfile = false
 -- o.backupdir = '/tmp/'
 -- o.directory = '/tmp/'
-o.undodir = os.getenv("HOME") .. "/.vim/undodir" 
+o.undodir = os.getenv("HOME") .. "/.vim/undodir"
 
 -- Remember 50 items in commandline history
 o.history = 50
@@ -57,4 +62,3 @@ o.splitbelow = true
 o.colorcolumn = "80"
 
 o.wrap = false
-

@@ -57,7 +57,7 @@ require('neodev').setup()
 --
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
---
+
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
@@ -66,7 +66,7 @@ local servers = {
     solargraph = {},
     -- pyright = {},
     -- rust_analyzer = {},
-    -- tsserver = {},
+    tsserver = {},
     -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
     lua_ls = {

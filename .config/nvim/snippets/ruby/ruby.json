@@ -1,0 +1,10 @@
+{
+  "generate test case": {
+    "prefix": "test",
+    "body": [
+      "test '$1' do",
+      "\t$0",
+      "end"
+    ]
+  }
+}

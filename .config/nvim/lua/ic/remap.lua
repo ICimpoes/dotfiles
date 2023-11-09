@@ -14,10 +14,15 @@ map('n', '<leader><F5>', vim.cmd.UndotreeToggle)
 
 map('t', '<Esc>', '<C-\\><C-n>', { desc = 'Escape from terminal mode' })
 
+map("x", "<leader>p", [["_dP]])
+map({"n", "v"}, "<leader>d", [["_d]])
+map({"n", "v"}, "<leader>d", [["_d]])
+-- map({"n", "v"}, "<leader>y", [["+y]])
+-- map("n", "<leader>Y", [["+Y]])
 
 -- Move between buffers
-map('n', '<C-]>', '<CMD>bn<CR>')
-map('n', '<C-[>', '<CMD>bp<CR>')
+map('n', '<leader>]', '<CMD>bn<CR>')
+map('n', '<leader>[', '<CMD>bp<CR>')
 
 -- Move line up and down in NORMAL and VISUAL modes
 -- Reference: https://vim.fandom.com/wiki/Moving_lines_up_or_down

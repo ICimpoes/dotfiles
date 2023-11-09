@@ -1,0 +1,13 @@
+{
+    "name": "snippets",
+    "contributes": {
+        "snippets": [
+            {
+                "language": [
+                    "ruby"
+                ],
+                "path": "./ruby/ruby.json"
+            }
+        ]
+    }
+}

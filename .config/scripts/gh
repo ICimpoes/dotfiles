@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+origin=`git ls-remote --get-url origin`
+origin="${origin/:///}"
+origin="${origin/git@/https://}"
+origin="${origin/.git//}"
+open $origin

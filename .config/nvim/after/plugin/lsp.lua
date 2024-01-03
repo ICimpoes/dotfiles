@@ -63,6 +63,7 @@ require('neodev').setup()
 local servers = {
     -- clangd = {},
     -- gopls = {},
+    yamlls = {},
     solargraph = {},
     -- pyright = {},
     -- rust_analyzer = {},
@@ -159,5 +160,58 @@ lspconfig.gopls.setup({
 lspconfig.lua_ls.setup({})
 
 lspconfig.solargraph.setup({
-    root_dir = lspconfig.util.root_pattern('.git')
+    cmd = { os.getenv( "HOME" ) .. "/.rbenv/shims/solargraph", 'stdio' },
+    root_dir = lspconfig.util.root_pattern("Gemfile", ".git", "."),
+    settings = {
+        solargraph = {
+            autoformat = false,
+            formatting = false,
+            completion = true,
+            diagnostic = true,
+            folding = true,
+            references = true,
+            rename = true,
+            symbols = true
+        }
+    }
+    -- root_dir = lspconfig.util.root_pattern('.git')
+})
+
+
+lspconfig.tsserver.setup {
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  cmd = { "typescript-language-server", "--stdio" }
+}
+
+lspconfig.yamlls.setup({
+    settings = {
+        yaml = {
+            format = {
+                enable = true,
+            },
+            hover = true,
+            completion = true,
+            customTags = {
+                "!fn",
+                "!And",
+                "!If",
+                "!Not",
+                "!Equals",
+                "!Or",
+                "!FindInMap sequence",
+                "!Base64",
+                "!Cidr",
+                "!Ref",
+                "!Ref Scalar",
+                "!Sub",
+                "!Select",
+                "!GetAtt",
+                "!GetAZs",
+                "!ImportValue",
+                "!Select",
+                "!Split",
+                "!Join sequence"
+            },
+        },
+    },
 })

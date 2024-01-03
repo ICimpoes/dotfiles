@@ -24,6 +24,10 @@ map({"n", "v"}, "<leader>d", [["_d]])
 map('n', '<leader>]', '<CMD>bn<CR>')
 map('n', '<leader>[', '<CMD>bp<CR>')
 
+-- increase/decrease
+map('n', '+', '<C-a>')
+map('n', '-', '<C-x>')
+
 -- Move line up and down in NORMAL and VISUAL modes
 -- Reference: https://vim.fandom.com/wiki/Moving_lines_up_or_down
 map('n', '<C-j>', '<CMD>move .+1<CR>')

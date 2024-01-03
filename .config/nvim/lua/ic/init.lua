@@ -19,3 +19,4 @@ autocmd('TextYankPost', {
 })
 
 vim.api.nvim_create_user_command('Gla', 'Git log --oneline --decorate --graph --all', {bang = true})
+vim.api.nvim_create_user_command('BD', '%bd|e#', {})

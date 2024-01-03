@@ -1,0 +1,182 @@
+#mysqlpath=/usr/local/mysql/bin
+#pythonbin=$HOME/Library/Python/2.7/bin
+#export PATH=$HOME/go/bin:$pythonbin:$mysqlpath:$PATH
+export PATH=/opt/homebrew/bin:$PATH
+#export EDITOR="/usr/local/bin/mate -w"
+
+#export GOPATH=$(go env GOPATH):$HOME/go/src/github.com/*/vendor
+#export GOPATH=$(go env GOPATH)
+
+#alias k='kubectl'
+#alias kube-proto='kubectl --context=proto0 -n=core'
+#alias kube-staging='kubectl --context=staging -n=core'
+#alias kube-prod='kubectl --context=prod -n=core'
+#alias kube='kubectl --context=minikube'
+
+
+# use vi key bindings
+# bindkey -v
+# avoid the annoying backspace/delete issue
+# where backspace stops deleting characters
+# bindkey -v '^?' backward-delete-char
+
+alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+
+export AWS_DEFAULT_PROFILE=mixbook-development-mfa
+alias mfa=$HOME/dev/work/cloud/mfa/auth.sh
+
+alias vim=nvim
+alias v=nvim
+
+alias zaebalsia='pmset displaysleepnow'
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
+#git aliases
+alias gs='git status'
+alias g='git'
+alias gco='git checkout'
+alias gnb='git checkout -b $1'
+alias gb='git branch'
+alias gtmp='git branch temp'
+alias gDtmp='git branch -D temp'
+
+alias gpush='git push origin $(git symbolic-ref --short HEAD)'
+
+alias gprd='gb | grep pr_ | xargs git branch -D'
+
+alias gr='git pull -r origin master'
+alias gf='git fetch --all'
+alias gmerge='git merge origin master'
+alias gmp='(git checkout main && git pull) || (git checkout master && git pull origin master)'
+alias gamend='git add . && git status && git commit --amend'
+#alias gc='git add . && git status && git commit'
+alias glt='go $(g tag | sort -r | head -n 1)'
+alias gm='git log -1 --pretty=%B'
+alias gwip='if [ "$git log -1 --pretty=%B"="WIP" ];
+                                then
+                                        git add . && git commit --amend -m "WIP";
+                                else
+                                        git add . && git commit -m "WIP";
+                        fi'
+alias gclean='for br in $(git branch | grep -v master); do
+                                echo $br
+                                git branch $br -d;
+                          done'
+
+alias gd='git diff'
+alias gdc='git diff --cached'
+
+alias glg='git log --stat'
+alias glgp='git log --stat -p'
+alias glgg='git log --graph'
+alias glgga='git log --graph --decorate --all'
+alias glgm='git log --graph --max-count=10'
+alias glo='git log --oneline --decorate'
+alias glol="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias glola="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
+alias glog='git log --oneline --decorate --graph'
+alias gla='git log --oneline --decorate --graph --all'
+
+alias gupdate='go master; g pull --prune; go -'
+
+#checkout pull request from github
+pr() {
+  local -r -i pr_nr=$1
+  local -r branch_name="pr_${pr_nr}_$2"
+  echo "git fetch ${2:-origin} pull/$pr_nr/head:$branch_name"
+  git fetch origin pull/$pr_nr/head:"${branch_name}" && git checkout "$branch_name"
+  git fetch
+  orig=`g branch -r --contains HEAD`
+  echo "$orig"
+  gb -u $orig
+  echo "`git log -1 --pretty=format:'%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit`"
+}
+
+# Pretty log messages
+_git_log_prettily(){
+  if ! [ -z $1 ]; then
+    git log --pretty=$1
+  fi
+}
+
+alias ide='goland'
+
+job_is_done() {
+  git fetch --all --prune
+  git checkout master
+  git merge origin/master
+  gclean
+  echo "$(tput setaf 1)Job is done! Go grab a cup of $(tput setab 7)cofee$(tput sgr 0)"
+}
+
+############################
+#FASD shit
+#eval "$(fasd --init auto)"
+#alias v='f -e vim' # quick opening files with vim
+#alias o='a -e open' # open a file
+
+google() {
+  open "https://google.com/search?q=$1"
+}
+
+
+show_vim_shortkeys() {
+echo "
+  h   move one character left
+  j   move one row down
+  k   move one row up
+  l   move one character right
+  w   move to beginning of next word
+  b   move to previous beginning of word
+  e   move to end of word
+  W   move to beginning of next word after a whitespace
+  B   move to beginning of previous word before a whitespace
+  E   move to end of word before a whitespace
+  All the above movements can be preceded by a count; e.g. 4j moves down 4 lines.
+  0   move to beginning of line
+  $   move to end of line
+  _   move to first non-blank character of the line
+  g_  move to last non-blank character of the line
+
+  gg  move to first line
+  G   move to last line
+  ngg move to n'th line of file (n is a number; 12gg moves to line 12)
+  nG  move to n'th line of file (n is a number; 12G moves to line 12)
+  H   move to top of screen
+  M   move to middle of screen
+  L   move to bottom of screen
+
+  zz  scroll the line with the cursor to the center of the screen
+  zt  scroll the line with the cursor to the top
+  zb  scroll the line with the cursor to the bottom
+
+  Ctrl-D  move half-page down
+  Ctrl-U  move half-page up
+  Ctrl-B  page up
+  Ctrl-F  page down
+  Ctrl-O  jump to last (older) cursor position
+  Ctrl-I  jump to next cursor position (after Ctrl-O)
+  Ctrl-Y  move view pane up
+  Ctrl-E  move view pane down
+
+  n   next matching search pattern
+  N   previous matching search pattern
+  *   next whole word under cursor
+  #   previous whole word under cursor
+  g*  next matching search (not whole word) pattern under cursor
+  g#  previous matching search (not whole word) pattern under cursor
+  gd  go to definition/first occurrence of the word under cursor
+  %   jump to matching bracket { } [ ] ( )
+
+  fX  to next 'X' after cursor, in the same line (X is any character)
+  FX  to previous 'X' before cursor (f and F put the cursor on X)
+  tX  til next 'X' (similar to above, but cursor is before X)
+  TX  til previous 'X'
+  ;   repeat above, in same direction
+  ,   repeat above, in reverse direction"
+}

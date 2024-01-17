@@ -1,13 +1,27 @@
 -- Telescope setup
-require('telescope').setup(
-    {
-        defaults = { file_ignore_patterns = { ".git/" } },
+require('telescope').setup({
+    defaults = {
+        vimgrep_arguments = {
+            {
+                "rg",
+                "--color=never",
+                "--no-heading",
+                "--with-filename",
+                "--line-number",
+                "--column",
+                "--smart-case",
+                "--hidden"
+            }
+        },
+        file_ignore_patterns = { ".git/" },
+        hidden = true,
         pickers = {
             oldfiles = {
                 cwd_only = true,
             }
         }
-    })
+    }
+})
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
@@ -23,20 +37,20 @@ vim.keymap.set('n', '<leader>fo', builtin.oldfiles, {})
 -- vim.keymap.set('n', '<leader>fr', builtin.registers, {})
 vim.keymap.set('n', '<leader>faa', '<CMD>:Telescope<CR>', {})
 vim.keymap.set('n', '<leader>fr', builtin.resume, {})
-vim.keymap.set('n', '<leader>Fl', function ()
-  vim.ui.input({ prompt = "Glob: ", completion = "file", default = "**/*." }, function(glob_pattern)
-  require('telescope.builtin').live_grep({
-    vimgrep_arguments = {
-      "rg",
-      "--color=never",
-      "--no-heading",
-      "--with-filename",
-      "--line-number",
-      "--column",
-      "--smart-case",
-      "--glob=" .. (glob_pattern or ""),
-    }
-  })
-end)
+vim.keymap.set('n', '<leader>Fl', function()
+    vim.ui.input({ prompt = "Glob: ", completion = "file", default = "**/*." }, function(glob_pattern)
+        require('telescope.builtin').live_grep({
+            vimgrep_arguments = {
+                "rg",
+                "--color=never",
+                "--no-heading",
+                "--with-filename",
+                "--line-number",
+                "--column",
+                "--smart-case",
+                "--glob=" .. (glob_pattern or ""),
+            }
+        })
+    end)
 end, {})
 pcall(require('telescope').load_extension, 'fzf')

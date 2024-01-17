@@ -10,3 +10,11 @@ alt - d: yabai -m display --focus south
 alt - f: yabai -m display --focus north
 alt - s: yabai -m display --focus west
 alt - g: yabai -m display --focus east
+
+alt - 1: yabai -m window --space 1 --focus
+alt - 2: yabai -m window --space 2 --focus
+alt - 3: yabai -m window --space 3 --focus
+alt - 4: yabai -m window --space 4 --focus
+alt - 5: yabai -m window --space 5 --focus
+alt - 6: yabai -m window --space 6 --focus
+alt - 7: yabai -m window --space 7 --focus

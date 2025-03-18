@@ -6,6 +6,7 @@
 @define-color textcolor1 #98C379;
 @define-color textcolor2 #282C34;
 @define-color textcolor3 #ABB2BF;
+@define-color textcolor4 #E06C75;
 @define-color iconcolor #E06C75;
 
 /* -----------------------------------------------------
@@ -55,13 +56,16 @@ window#waybar {
     font-size: 23;
     border-radius: 5px;
     min-width: 40px;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
 #workspaces button:hover {
     color: @textcolor1;
-    background: @workspacesbackground2;
-    border-radius: 5px;
+    font-size: 20;
+    background: rgba(0, 0, 0, 0);
+    border-radius: 0px;
+    box-shadow: none;
+    text-shadow: none;
 }
 
 /* -----------------------------------------------------
@@ -339,4 +343,3 @@ label:focus {
 #network.disconnected {
     background-color: #f53c3c;
 }
-

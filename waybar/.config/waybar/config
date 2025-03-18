@@ -37,7 +37,7 @@
 		"default": ""
         },
         "persistent-workspaces": {
-             "*": 2
+             "*": 4
         }
     },
 
@@ -56,10 +56,6 @@
         "tooltip-format": "Powermenu",
         "on-click": "wlogout -b 4",
         "tooltip": false
-    },
-
-    // Keyboard State
-    "keyboard-state": {
     },
 
     // System tray

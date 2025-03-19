@@ -9,19 +9,20 @@
     // Load Modules
     "modules-left": [
         "tray",
-	"hyprland/window"
+        "hyprland/window"
     ],
     "modules-center": [
         "hyprland/workspaces"
     ],
     "modules-right": [
         "mpd",
+        "idle_inhibitor",
         "pulseaudio",
-	"bluetooth",
+        "bluetooth",
         "network",
         "cpu",
         "memory",
-	"hyprland/language",
+        "hyprland/language",
         "clock",
         "custom/exit"
     ],
@@ -32,9 +33,9 @@
         "all-outputs": true,
         "format": "{}",
         "format-icons": {
-		"urgent": "",
-		"active": "",
-		"default": ""
+            "urgent": "",
+            "active": "",
+            "default": ""
         },
         "persistent-workspaces": {
              "*": 4
@@ -67,7 +68,7 @@
     // Clock
     "clock": {
         // "timezone": "America/New_York",
-	"on-click": "gnome-calendar",
+        "on-click": "gnome-calendar",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
 
@@ -177,6 +178,7 @@
             "activated": "",
             "deactivated": ""
         },
-        "on-click-right": "hyprlock"
+        "on-click-right": "hyprlock",
+        "timeout": 1
     }
 }

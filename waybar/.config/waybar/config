@@ -8,11 +8,12 @@
 
     // Load Modules
     "modules-left": [
-        "tray",
+        "hyprland/workspaces",
         "hyprland/window"
     ],
     "modules-center": [
-        "hyprland/workspaces"
+        "tray",
+        "clock"
     ],
     "modules-right": [
         "mpd",
@@ -23,7 +24,6 @@
         "cpu",
         "memory",
         "hyprland/language",
-        "clock",
         "custom/exit"
     ],
 
@@ -136,12 +136,12 @@
     // Pulseaudio
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{icon}  {volume}%",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format": "{icon}  {volume}% |",
+        "format-bluetooth": "{volume}% {icon} {format_source} |",
+        "format-bluetooth-muted": " {icon} {format_source} |",
+        "format-muted": " {format_source} |",
+        "format-source": "{volume}%  |",
+        "format-source-muted": "  |",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -156,11 +156,8 @@
 
     // Bluetooth
     "bluetooth": {
-        "format-disabled": "",
-        "format-off": "",
-        "interval": 30,
+        "format": "{} |",
         "on-click": "blueman-manager",
-        "format-no-controller": ""
     },
 
     // Other
@@ -172,7 +169,7 @@
 
     // Idle Inhibator
     "idle_inhibitor": {
-        "format": "{icon} ",
+        "format": "{icon} |",
         "tooltip": true,
         "format-icons":{
             "activated": "",

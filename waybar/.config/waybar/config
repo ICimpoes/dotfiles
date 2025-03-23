@@ -13,7 +13,8 @@
     ],
     "modules-center": [
         "tray",
-        "clock"
+        "clock",
+        "hyprland/language",
     ],
     "modules-right": [
         "mpd",
@@ -23,7 +24,6 @@
         "network",
         "cpu",
         "memory",
-        "hyprland/language",
         "custom/exit"
     ],
 
@@ -99,7 +99,7 @@
     },
 
     "hyprland/language": {
-        "format": "| ⌨ {short}"
+        "format": "{short}"
     },
 
     // Group Hardware
@@ -140,8 +140,8 @@
         "format-bluetooth": "{volume}% {icon} {format_source} |",
         "format-bluetooth-muted": " {icon} {format_source} |",
         "format-muted": " {format_source} |",
-        "format-source": "{volume}%  |",
-        "format-source-muted": "  |",
+        "format-source": "{volume}% ",
+        "format-source-muted": " ",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -156,7 +156,7 @@
 
     // Bluetooth
     "bluetooth": {
-        "format": "{} |",
+        "format": " {} |",
         "on-click": "blueman-manager",
     },
 

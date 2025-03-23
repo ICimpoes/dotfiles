@@ -1,14 +1,25 @@
-@define-color backgroundtransparent rgba(0,0,0,0.3);
-@define-color backgroundlight #ABB2BF;
-@define-color backgrounddark #282C34;
-@define-color workspacesbackground1 #FFFFFF;
-@define-color workspacesbackground2 #282C34;
-@define-color bordercolor #FFFFFF;
-@define-color greencolor #98C379;
-@define-color textcolor2 #282C34;
-@define-color textcolor3 #ABB2BF;
-@define-color bluecolor #61AFEF;
-@define-color iconcolor #C678DD;
+@define-color black                 #282c34;
+@define-color blacktransparent      rgba(0x28, 0x2c, 0x34, 0.6);
+@define-color red                   #e06c75;
+@define-color green                 #98c379;
+@define-color yellow                #e5c07b;
+@define-color blue                  #61afef;
+@define-color purple                #c678dd;
+@define-color cyan                  #56b6c2;
+@define-color white                 #dcdfe4;
+@define-color whitetransparent      rgba(0xdc, 0xdf, 0xe4, 0.9);
+
+@define-color icons @cyan;
+@define-color background @blacktransparent;
+@define-color clock @blue;
+@define-color language @purple;
+
+@define-color window @green;
+@define-color workspace @white;
+@define-color workspaceactive @blue;
+
+@define-color tooltipbackround @whitetransparent;
+@define-color tooltipcolor @black;
 
 /* -----------------------------------------------------
  * General
@@ -21,11 +32,7 @@
 }
 
 window#waybar {
-    background-color: @backgroundtransparent;
-    border-bottom: 0px solid #ffffff;
-    /* color: #FFFFFF; */
-    transition-property: background-color;
-    transition-duration: .2s;
+    background-color: @background;
 }
 
 /* -----------------------------------------------------
@@ -33,28 +40,24 @@ window#waybar {
  * ----------------------------------------------------- */
 
 #workspaces {
-    min-height: 45px;
-    margin: 5px 1px 6px 1px;
-    padding: 0px 1px;
+    min-height: 40px;
     font-weight: bold;
-    font-style: normal;
-    font-size: 16px;
-    color: @greencolor;
+    font-size: 17px;
 }
 
 #workspaces button {
-    color: @textcolor3;
+    color: @workspace;
     transition: all 0.2s ease-in-out;
 }
 
 #workspaces button.active {
-    color: @bluecolor;
+    color: @workspaceactive;
     font-size: 23;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
 #workspaces button:hover {
-    color: @bluecolor;
+    color: @workspaceactive;
     font-size: 20;
     font-weight: bold;
     background: transparent;
@@ -67,15 +70,14 @@ window#waybar {
  * ----------------------------------------------------- */
 
 tooltip {
-    border-radius: 3px;
-    background-color: @iconcolor;
-    opacity: 0.7;
+    border-radius: 1px;
+    background-color: @tooltipbackround;
     padding: 5px;
     margin: 0px;
 }
 
 tooltip label {
-    color: @textcolor2;
+    color: @tooltipcolor;
 }
 
 /* -----------------------------------------------------
@@ -83,12 +85,9 @@ tooltip label {
  * ----------------------------------------------------- */
 
 #window {
-    margin: 10px 15px 10px 0px;
-    padding: 2px 10px 0px 10px;
-    border-radius: 5px;
-    color: @greencolor;
-    font-size: 20px;
-    font-style: italic;
+    color: @window;
+    font-family: bold;
+    font-size: 16px;
 }
 
 window#waybar.empty #window {
@@ -98,7 +97,7 @@ window#waybar.empty #window {
 /* -----------------------------------------------------
  * Taskbar
  * ----------------------------------------------------- */
-
+/*
 #taskbar {
     background: @backgroundlight;
     margin: 6px 15px 6px 0px;
@@ -114,10 +113,10 @@ window#waybar.empty #window {
     border-radius: 5px;
     padding: 0px 5px 0px 5px;
 }
-
+*/
 #idle_inhibitor {
     font-size: 18;
-    color: @iconcolor
+    color: @icons;
 }
 /* -----------------------------------------------------
  * Modules
@@ -141,21 +140,6 @@ window#waybar.empty #window {
 #pulseaudio,
 #battery,
 #custom-appmenu,
-#custom-quicklink1,
-#custom-quicklink2,
-#custom-quicklink3,
-#custom-quicklink4,
-#custom-quicklink5,
-#custom-quicklink6,
-#custom-quicklink7,
-#custom-quicklink8,
-#custom-quicklink9,
-#custom-quicklink10 {
-    padding: 0px;
-    margin-right: 7px;
-    font-size: 20px;
-    color: @iconcolor;
-}
 
 /* -----------------------------------------------------
  * Custom Modules
@@ -176,21 +160,23 @@ window#waybar.empty #window {
     margin: 2px 20px 0px 0px;
     padding: 0px;
     font-size: 20px;
-    color: @iconcolor;
+    color: @icons;
 }
 
 /* -----------------------------------------------------
  * Hardware Group
  * ----------------------------------------------------- */
 
- #disk,#memory,#cpu,#language {
+ #disk,#memory,#cpu {
     margin: 0px;
     padding: 0px;
     font-size: 20px;
-    color: @iconcolor;
+    color: @icons;
 }
 
 #language {
+    color: @language;
+    font-size: 25px;
     margin-right: 5px;
 }
 
@@ -201,7 +187,7 @@ window#waybar.empty #window {
 #clock {
     font-size: 27px;
     font-style: italic;
-    color: @bluecolor;
+    color: @clock;
     padding-right: 10px;
 }
 
@@ -212,12 +198,12 @@ window#waybar.empty #window {
 #pulseaudio {
     background-color: transparent;
     font-size: 18px;
-    color: @iconcolor
+    color: @icons;
 }
 
 #pulseaudio.muted {
     background-color: @backgrounddark;
-    color: @greencolor;
+    color: @icons;
 }
 
 /* -----------------------------------------------------
@@ -225,9 +211,8 @@ window#waybar.empty #window {
  * ----------------------------------------------------- */
 
 #network {
-    background-color: @backgroundtransparent;
     font-size: 18px;
-    color: @iconcolor;
+    color: @icons;
     border-radius: 5px;
     margin: 10px 10px 10px 0px;
 }
@@ -249,7 +234,7 @@ window#waybar.empty #window {
  #bluetooth, #bluetooth.on, #bluetooth.connected {
     background-color: transparent;
     font-size: 18px;
-    color: @iconcolor;
+    color: @icons;
 }
 
 #bluetooth.off {
@@ -305,7 +290,7 @@ window#waybar.empty #window {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+    background-color: @tray;
 }
 
 /* -----------------------------------------------------
@@ -313,7 +298,7 @@ window#waybar.empty #window {
  * ----------------------------------------------------- */
 
 label:focus {
-    background-color: #000000;
+    background-color: @white;
 }
 
 #backlight {

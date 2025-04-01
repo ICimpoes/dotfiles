@@ -7,6 +7,7 @@ stow
 cliphist
 tmux
 nvim
+hyprpolkitagent
 ``` 
 
 ## fonts

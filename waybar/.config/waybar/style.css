@@ -52,13 +52,13 @@ window#waybar {
 
 #workspaces button.active {
     color: @workspaceactive;
-    font-size: 23;
+    font-size: 23px;
     transition: all 0.1s ease-in-out;
 }
 
 #workspaces button:hover {
     color: @workspaceactive;
-    font-size: 20;
+    font-size: 20px;
     font-weight: bold;
     background: transparent;
     box-shadow: none;
@@ -115,7 +115,7 @@ window#waybar.empty #window {
 }
 */
 #idle_inhibitor {
-    font-size: 18;
+    font-size: 18px;
     color: @icons;
 }
 /* -----------------------------------------------------
